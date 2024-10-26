@@ -1,0 +1,84 @@
+#score {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#link {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#maintitle {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 5px;
+    padding-right: 650px;
+    color:lavender;
+}
+
+#creators {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: -138px;
+    padding: 0px;
+    padding-left: 400px;
+    color:lavender;
+    background-color: black;
+}
+
+.manual {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0px;
+    padding: 5px;
+}
+
+#game {
+    width: 900px;
+    height: 500px;
+    border: 5px solid black;
+    margin: auto;
+    background-image: url("./null_bg.jpg");
+    background-size: contain;
+}
+
+#dino {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 345px; 
+    left: 410px;
+    background-image: url("./Dino.png");
+    background-size: cover;
+}
+
+#spike {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 260px;
+    right: 800px;
+    background-image: url("./spike.png");
+    background-size: cover;
+    animation: spike 1.33s infinite;
+}
+
+@keyframes spike {
+    0%{left: 800px;}
+    100%{left: -100px;}
+}
+
+.jump-animation {
+    animation: jump 0.5s;
+}
+
+@keyframes jump {
+    0% {top: 225px;}
+    50% {top: 125px;}
+    75% {top: 125px;}
+    100% {top: 225px;}
+}
