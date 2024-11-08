@@ -84,12 +84,7 @@
     /* animation-delay: 2000; */
 }
 
-@keyframes spike {
-    0%{left: 800px;}
-    100%{left: -100px;}
-}
-
-@keyframes saw{
+@keyframes item {
     0%{left: 800px;}
     100%{left: -100px;}
 }

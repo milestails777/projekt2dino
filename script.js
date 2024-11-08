@@ -5,10 +5,10 @@ const saw = document.getElementById('saw');
 const sound = new Audio('jump.wav')
 
 function jump() {
-  dino.classList.add('jump-animation');
-  setTimeout(() => {
-    dino.classList.remove('jump-animation');
-  }, 500);
+    dino.classList.add('jump-animation');
+    setTimeout(() => {
+        dino.classList.remove('jump-animation');
+    }, 500);
 }
 
 document.addEventListener('click', () => {
@@ -18,31 +18,43 @@ document.addEventListener('click', () => {
     }
 });
 
+
 const items = [
-    {element: spike, time: "1.33s"},
-    {element: spike, time: "1.33s"},
-    {element: saw, time: "7s"},
+    { element: spike, time: "2.33s" },
+    { element: spike, time: "2.33s" },
+    { element: saw, time: "2.33s" },
 ]
 
-setTimeout(() => {
-    spike.style.animation = "spike 1.33s infinite";
-}, 1000);
+let itemIndex = 0
+setInterval(() => {
+    item = items[itemIndex]
+    console.log("item", item);
+
+    item.element.style.animation = "none";
+    setTimeout(() => { item.element.style.animation = "item " + item.time }, 1)
+    itemIndex++
+    if (items.length == itemIndex) {
+        itemIndex = 0
+    }
+}, 3000)
+
 
 setInterval(() => {
     score.innerText++;
+    const item = items[itemIndex]
     const dinoTop = parseInt(window.getComputedStyle(dino)
         .getPropertyValue('top'));
-    const spikeLeft = parseInt(window.getComputedStyle(spike)
+    const itemLeft = parseInt(window.getComputedStyle(item.element)
         .getPropertyValue('left'));
 
-    if (spikeLeft < 0) {
-        spike.style.display = 'none';
-    } else {
-        spike.style.display = '';
-    }
+    //  if (itemLeft < 0) {
+    //     item.element.style.display = 'none';
+    //  } else {
+    //     item.element.style.display = '';
+    //  }
 
-    if (spikeLeft < 430 && spikeLeft > 280 && dinoTop > 300) {
-        alert("Game Over! \n Your score: " + score.innerText + 
+    if (itemLeft < 430 && itemLeft > 280 && dinoTop > 300) {
+        alert("Game Over! \n Your score: " + score.innerText +
             "\n Try Again...)");
         location.reload();
     }
@@ -51,51 +63,25 @@ setInterval(() => {
     //console.log(spikeLeft)
 }, 50);
 
-setTimeout(() => {
-    saw.style.animation = "saw 7s infinite";
-    saw.reload();
-}, 3000);
-
-setInterval(() => {
-    score.innerText++;
-    const dinoTop = parseInt(window.getComputedStyle(dino)
-        .getPropertyValue('top'));
-    const sawLeft = parseInt(window.getComputedStyle(saw)
-        .getPropertyValue('left'));
-
-    if (sawLeft < 0) {
-        saw.style.display = 'none';
-    } else {
-        saw.style.display = '';
-    }
-
-    if (sawLeft < 350 && sawLeft > 280 && dinoTop > 300) {
-        alert("Game Over! \n You got a score of: " + score.innerText + 
-            "\n Try Again...)");
-        location.reload();
-    }
-
-    //console.log(dinoTop)
-    //console.log(sawLeft)
-}, 50);
 
 
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener("DOMContentLoaded", function () {
     const playButton = document.getElementById("playButton");
     const audio = document.getElementById("audio");
 
-if (playButton && audio) {
-    playButton.addEventListener('click', function() {
-        if (audio.paused) {
-            audio.play();
-            playButton.innerHTML = '<img src="mutebutton.png" width=100px height=100px style="background-color: lightgray;" alt="Pause Music" />';
-        } else {
-            audio.pause();
-            playButton.innerHTML = '<img src="unmutebutton.png" width=100px height=100px style="background-color: lightgray;" alt="Play Music" />';
-        }
-    });
-} else {
-    console.error("Elements not found!");
-}
+    if (playButton && audio) {
+        playButton.addEventListener('click', function () {
+            if (audio.paused) {
+                audio.play();
+                playButton.innerHTML = '<img src="mutebutton.png" width=100px height=100px style="background-color: lightgray;" alt="Pause Music" />';
+            } else {
+                audio.pause();
+                playButton.innerHTML = '<img src="unmutebutton.png" width=100px height=100px style="background-color: lightgray;" alt="Play Music" />';
+            }
+        });
+    } else {
+        console.error("Elements not found!");
+    }
 
 });
