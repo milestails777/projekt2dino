@@ -3,6 +3,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#record {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #link {
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,10 +69,27 @@
     right: 800px;
     background-image: url("./spike.png");
     background-size: cover;
-    animation: spike 1.33s infinite;
+    /*animation: spike 1.33s infinite;*/
+}
+
+#saw {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 180px;
+    right: 800px;
+    background-image: url("./saw.png");
+    background-size: cover;
+    /* animation: saw 7.00s infinite; */
+    /* animation-delay: 2000; */
 }
 
 @keyframes spike {
+    0%{left: 800px;}
+    100%{left: -100px;}
+}
+
+@keyframes saw{
     0%{left: 800px;}
     100%{left: -100px;}
 }

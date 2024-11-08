@@ -1,0 +1,7 @@
+version 1.0
+This was original beta version of this dinosaur game.
+
+Version 1.1 Update:
+- Controlls right now is LEFT MOUSE BUTTON
+- We added a new music button with the soundtrack.
+- Music Buttons was created in Photoshop.
