@@ -20,9 +20,9 @@ document.addEventListener('click', () => {
 
 
 const items = [
-    { element: spike, time: "2.33s" },
-    { element: spike, time: "2.33s" },
-    { element: saw, time: "2.33s" },
+    { element: spike, time: "2.00s" },
+    { element: spike, time: "2.00s" },
+    { element: saw, time: "2.00s" },
 ]
 
 let itemIndex = 0
