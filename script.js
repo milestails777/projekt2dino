@@ -1,4 +1,4 @@
-const dino = document.getElementById('dino');
+const dino = document.getElementById('dino'); 
 const spike = document.getElementById('spike');
 const score = document.getElementById('score');
 const saw = document.getElementById('saw');

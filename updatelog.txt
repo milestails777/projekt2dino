@@ -5,3 +5,8 @@ Version 1.1 Update:
 - Controlls right now is LEFT MOUSE BUTTON
 - We added a new music button with the soundtrack.
 - Music Buttons was created in Photoshop.
+
+Version 1.2 Update:
+- We added new objects
+- soundtrack is working fine
+- Still fixing game
