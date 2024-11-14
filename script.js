@@ -1,8 +1,26 @@
 const dino = document.getElementById('dino'); 
 const spike = document.getElementById('spike');
 const score = document.getElementById('score');
+const record = document.getElementById('record');  
 const saw = document.getElementById('saw');
-const sound = new Audio('jump.wav')
+const sound = new Audio('jump.wav');
+
+
+function getRecordScore() {
+    return localStorage.getItem('record') || 0;
+}
+
+
+function checkAndUpdateRecord(currentScore) {
+    const recordScore = getRecordScore();
+    if (currentScore > recordScore) {
+        localStorage.setItem('record', currentScore);
+        record.innerText = `Record: ${currentScore}`;
+    }
+}
+
+
+record.innerText = `Record: ${getRecordScore()}`;
 
 function jump() {
     dino.classList.add('jump-animation');
@@ -18,53 +36,37 @@ document.addEventListener('click', () => {
     }
 });
 
-
 const items = [
-    { element: spike, time: "2.00s" },
-    { element: spike, time: "2.00s" },
     { element: saw, time: "2.00s" },
-]
+    { element: spike, time: "1.30s" },
+    { element: spike, time: "2.00s" },
+];
 
-let itemIndex = 0
+let itemIndex = 0;
 setInterval(() => {
-    item = items[itemIndex]
-    console.log("item", item);
+    const item = items[itemIndex];
 
     item.element.style.animation = "none";
-    setTimeout(() => { item.element.style.animation = "item " + item.time }, 1)
-    itemIndex++
-    if (items.length == itemIndex) {
-        itemIndex = 0
-    }
-}, 3000)
+    setTimeout(() => { item.element.style.animation = "item " + item.time }, 1);
 
+    itemIndex++;
+    if (itemIndex === items.length) {
+        itemIndex = 0;
+    }
+}, 3000);
 
 setInterval(() => {
     score.innerText++;
-    const item = items[itemIndex]
-    const dinoTop = parseInt(window.getComputedStyle(dino)
-        .getPropertyValue('top'));
-    const itemLeft = parseInt(window.getComputedStyle(item.element)
-        .getPropertyValue('left'));
-
-    //  if (itemLeft < 0) {
-    //     item.element.style.display = 'none';
-    //  } else {
-    //     item.element.style.display = '';
-    //  }
+    const item = items[itemIndex];
+    const dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue('top'));
+    const itemLeft = parseInt(window.getComputedStyle(item.element).getPropertyValue('left'));
 
     if (itemLeft < 430 && itemLeft > 280 && dinoTop > 300) {
-        alert("Game Over! \n Your score: " + score.innerText +
-            "\n Try Again...)");
+        checkAndUpdateRecord(parseInt(score.innerText));
+        alert("Game Over! \n Your score: " + score.innerText + "\n Try Again...");
         location.reload();
     }
-
-    //console.log(dinoTop)
-    //console.log(spikeLeft)
 }, 50);
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const playButton = document.getElementById("playButton");
@@ -83,5 +85,4 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         console.error("Elements not found!");
     }
-
 });
