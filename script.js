@@ -51,7 +51,7 @@ setInterval(() => {
 
     itemIndex++;
     if (itemIndex === items.length) {
-        itemIndex = 0;
+        itemIndex = 0;   
     }
 }, 3000);
 

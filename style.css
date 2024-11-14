@@ -93,7 +93,7 @@
     animation: jump 0.5s;
 }
 
-@keyframes jump {
+@keyframes jump {     
     0% {top: 225px;}
     50% {top: 125px;}
     75% {top: 125px;}
