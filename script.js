@@ -37,22 +37,23 @@ document.addEventListener('click', () => {
 });
 
 const items = [
-    { element: saw, time: "2.00s" },
-    { element: spike, time: "1.30s" },
+    { element: spike, time: "2.00s" },
+    { element: saw, time: "1.30s" },
     { element: spike, time: "2.00s" },
 ];
 
-let itemIndex = 0;
+let itemIndex = -1;
 setInterval(() => {
+    itemIndex++;
+    if (itemIndex === items.length) {
+        itemIndex = 0;   
+    }
     const item = items[itemIndex];
 
     item.element.style.animation = "none";
     setTimeout(() => { item.element.style.animation = "item " + item.time }, 1);
 
-    itemIndex++;
-    if (itemIndex === items.length) {
-        itemIndex = 0;   
-    }
+    
 }, 3000);
 
 setInterval(() => {
