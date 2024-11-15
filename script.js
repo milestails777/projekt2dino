@@ -6,12 +6,12 @@ const saw = document.getElementById('saw');
 const sound = new Audio('jump.wav');
 
 
-function getRecordScore() {
+function getRecordScore() { //record system function
     return localStorage.getItem('record') || 0;
 }
 
 
-function checkAndUpdateRecord(currentScore) {
+function checkAndUpdateRecord(currentScore) { //this code is checking how many score have you earned and update it
     const recordScore = getRecordScore();
     if (currentScore > recordScore) {
         localStorage.setItem('record', currentScore);
@@ -20,29 +20,29 @@ function checkAndUpdateRecord(currentScore) {
 }
 
 
-record.innerText = `Record: ${getRecordScore()}`;
+record.innerText = `Record: ${getRecordScore()}`; //final score result
 
-function jump() {
+function jump() { //this code is how it using animation for Dino
     dino.classList.add('jump-animation');
     setTimeout(() => {
         dino.classList.remove('jump-animation');
     }, 500);
 }
 
-document.addEventListener('click', () => {
+document.addEventListener('click', () => { //dinocontroll
     if (!dino.classList.contains('jump-animation')) {
         jump();
         sound.play();
     }
 });
 
-const items = [
+const items = [ //all objects/enemies
     { element: spike, time: "2.00s" },
     { element: saw, time: "1.30s" },
     { element: spike, time: "2.00s" },
 ];
 
-let itemIndex = -1;
+let itemIndex = -1; //this code is trying to use items for work and after that making a loop to restart items
 setInterval(() => {
     itemIndex++;
     if (itemIndex === items.length) {
@@ -56,7 +56,7 @@ setInterval(() => {
     
 }, 3000);
 
-setInterval(() => {
+setInterval(() => { //here is the hitbox code and score element to write a record on a message
     score.innerText++;
     const item = items[itemIndex];
     const dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue('top'));
@@ -69,7 +69,7 @@ setInterval(() => {
     }
 }, 50);
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () { //audio/music button
     const playButton = document.getElementById("playButton");
     const audio = document.getElementById("audio");
 
