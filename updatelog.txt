@@ -14,3 +14,7 @@ Version 1.2 Update:
 Version 1.3 Update:
 - We finally made record system!
 - Still fixing collision   
+
+Version 1.4 Update:
+- This is the Final version of the Dino Game
+- We fixed bugs

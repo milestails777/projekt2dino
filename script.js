@@ -40,7 +40,7 @@ const items = [ //all objects/enemies
     { element: spike, time: "2.00s" },
     { element: saw, time: "1.30s" },
     { element: spike, time: "2.00s" },
-];
+]
 
 let itemIndex = -1; //this code is trying to use items for work and after that making a loop to restart items
 setInterval(() => {
@@ -51,18 +51,22 @@ setInterval(() => {
     const item = items[itemIndex];
 
     item.element.style.animation = "none";
-    setTimeout(() => { item.element.style.animation = "item " + item.time }, 1);
+    time = (Math.random() * 3 + 1) + "s"
+    setTimeout(() => { item.element.style.animation = "item " + time }, 1);
 
     
-}, 3000);
+}, 1500);
 
 setInterval(() => { //here is the hitbox code and score element to write a record on a message
     score.innerText++;
+    if (itemIndex < 0) return
     const item = items[itemIndex];
     const dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue('top'));
     const itemLeft = parseInt(window.getComputedStyle(item.element).getPropertyValue('left'));
 
-    if (itemLeft < 430 && itemLeft > 280 && dinoTop > 300) {
+    console.log(itemLeft, dinoTop)
+
+    if (itemLeft < 430 && itemLeft > 370 && dinoTop > 300) {
         checkAndUpdateRecord(parseInt(score.innerText));
         alert("Game Over! \n Your score: " + score.innerText + "\n Try Again...");
         location.reload();
